@@ -1,0 +1,60 @@
+// Hello World! program
+namespace HelloWorld
+{
+    class Hello
+    {
+        static void Main(string[] args)
+        {
+            int[,] array = new int[,] 
+                            { 
+                                {1, 2, 3}, 
+                                {4, 5, 6}, 
+                                {7, 8, 9}
+                            };
+
+            int n = array.GetLength(0);
+
+            Transpose(array, n);
+            Reflect(array, n);
+            Print(array, n);
+        }
+
+        private static void Transpose(int[,] array, int n)
+        {
+            for(int i = 0; i < n; i++)
+            {
+                for(int j = i + 1; j < n; j++)
+                {
+                    int temp = array[i, j];
+                    array[i, j] = array[j, i];
+                    array[j, i] = temp;
+                }
+            }
+        }
+
+        private static void Reflect(int[,] array, int n)
+        {
+            for(int i = 0; i < n; i++)
+            {
+                for(int j = 0; j <= n/2; j++)
+                {
+                    int temp = array[i, n - j - 1];
+                    array[i, n - j - 1] = array[i, j];
+                    array[i, j] = temp;
+                }
+            }
+        }
+
+        private static void Print(int[,] array, int n)
+        {
+            for(int i = 0; i < n; i++)
+            {
+                for(int j = 0; j < n; j++)
+                {
+                    Console.Write(array[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}

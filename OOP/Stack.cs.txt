@@ -1,0 +1,17 @@
+namespace CSharpDatastructuresAlgorithms
+{
+    public class Stack
+    {
+        public static void Main()
+        {
+            Stack<string> stack = new Stack<string>();
+            stack.Push("1");
+            stack.Push("2");
+            stack.Push("3");
+            while (stack.Count > 0)
+            {
+                Console.WriteLine(stack.Pop());
+            }
+        }
+    }
+}

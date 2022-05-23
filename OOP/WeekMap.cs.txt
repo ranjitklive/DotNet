@@ -1,0 +1,31 @@
+using System;
+using System.Collections.Generic;
+
+public static class Globals
+{
+	public static string solution(in string day, int k)
+	{
+		List<string> days = new List<string>() {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+		Dictionary<string, int> week_map = new Dictionary<string, int>()
+		{
+			{"Sun", 0},
+			{"Mon", 1},
+			{"Tue", 2},
+			{"Wed", 3},
+			{"Thu", 4},
+			{"Fri", 5},
+			{"Sat", 6}
+		};
+
+		return days[(week_map[day] + k) % 7];
+	}
+
+	internal static void Main()
+	{
+
+		Console.Write(solution("Sat", 21));
+		Console.Write(" Expected: Sat");
+		Console.Write("\n");
+
+	}
+}

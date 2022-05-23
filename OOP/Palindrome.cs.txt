@@ -1,0 +1,75 @@
+﻿// C# program for array rotation
+using System;
+
+public class MathFunctions {
+	public bool IsPalindrome(int x) {
+        
+        bool isPalindrome = true;
+        
+        int[] digitsArr = GetDigits(x);
+        
+        int low = 0;
+        int high = digitsArr.Length - 1;
+        
+        while(low < high)
+        {
+            if(digitsArr[low] != digitsArr[high])
+            {
+                isPalindrome = false;
+                break;
+            }
+            
+            low++;
+            high--;
+        }
+        
+        return isPalindrome;   
+    }
+    
+    // public int[] GetDigits(int number)
+    // {
+    //     int digitCount = number.ToString().Length;
+    //     int[] result = new int[digitCount];
+        
+    //     for(int i = 0; i < digitCount; i++)
+    //     {
+    //         result[i] = number % 10;
+    //         number /= 10;
+    //     }
+        
+    //     return result;
+    // }
+
+	public int[] GetDigits(int number)
+    {        
+        List<int> result = new List<int>();
+        
+        while(number / 10 > 0)
+        {
+            result.Add(number % 10);
+            number /= 10;
+        }
+		result.Add(number);
+        
+        return result.ToArray();
+    }
+}
+
+namespace OOP
+{
+	public class Trigger
+	{
+		// Driver code
+		public static void Main()
+		{
+			int number = 1234321;
+			MathFunctions func = new MathFunctions();
+			int[] digits = func.GetDigits(number);
+			foreach(var num in digits)
+			{
+				Console.WriteLine(num);
+			}
+			//Console.WriteLine("Is Palindrome {0} -- {1}", number, func.IsPalindrome(number));
+		}
+	}
+}

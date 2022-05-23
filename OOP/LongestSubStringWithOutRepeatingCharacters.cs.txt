@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+
+namespace com.coding.patterns.slidingWindow
+{
+
+	public class LongestSubStringWithOutRepeatingCharacters
+	{
+		public static int findLengthOfLongestRepeatingCharacters(string s)
+		{
+			if (s.Length == 0)
+			{
+				return s.Length;
+			}
+
+			int left = 0, right = 0;
+			int longest = 0;
+			int n = s.Length;
+			HashSet<char> window = new HashSet<char>();
+			while (right < n)
+			{
+				if (!window.Contains(s[right]))
+				{
+					window.Add(s[right]);
+					right++;
+				}
+				else
+				{
+					window.Remove(s[left]);
+					left++;
+				}
+				longest = Math.Max(longest, right - left);
+			}
+
+			return longest;
+		}
+
+		public static void Main(string[] args)
+		{
+			Console.WriteLine(findLengthOfLongestRepeatingCharacters("ABCDBEA"));
+		}
+    }
+}

@@ -1,0 +1,47 @@
+﻿using System;
+
+namespace com.sorting
+{
+	/// <summary>
+	/// Sorting: Bubble Sort
+	/// Time Complexity: O(N^2)
+	/// Space Complexity: O(1)
+	/// </summary>
+
+	public class BubbleSort
+	{
+		public static int[] sort(int[] arr)
+		{
+			for (int i = arr.Length - 1; i >= 0; i--)
+			{
+				bool swapped = false;
+				for (int j = 0; j < i; j++)
+				{
+					if (arr[j] > arr[j + 1])
+					{
+						// Swap the elements
+						int temp = arr[j];
+						arr[j] = arr[j + 1];
+						arr[j + 1] = temp;
+						swapped = true;
+					}
+				}
+				if (!swapped)
+				{
+					return arr;
+				}
+			}
+			return arr;
+		}
+
+		public static void Main(string[] args)
+		{
+			int[] arr = { 33, 30, 27, 25, 20 };
+			sort(arr);
+			foreach (int i in arr)
+			{
+				Console.WriteLine(i);
+			}
+		}
+	}
+}

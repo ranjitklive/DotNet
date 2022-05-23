@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+
+internal class FindSum
+{
+    internal static bool findSumOfTwo(int[] A, int val)
+    {
+        ISet<int> foundValues = new HashSet<int>();
+        foreach (int a in A)
+        {
+            if (foundValues.Contains(val - a))
+            {
+                return true;
+            }
+
+            foundValues.Add(a);
+        }
+        return false;
+    }
+
+    public static void Main(string[] args)
+    {
+        int[] v = new int[] { 5, 7, 1, 2, 8, 4, 3 };
+        int[] test = new int[] { 3, 20, 1, 2, 7 };
+
+        for (int i = 0; i < test.Length; i++)
+        {
+            bool output = findSumOfTwo(v, test[i]);
+            Console.WriteLine("findSumOfTwo(v, " + test[i] + ") = " + (output ? "true" : "false"));
+        }
+    }
+}
